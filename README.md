@@ -123,7 +123,7 @@ gtkwave traffic.vcd
 ---
 
 ## Verification Results
-![Traffic Waveform](waveforms/traffic_waveform.png)
+
 The design was verified using simulation and waveform analysis.
 
 Verified functionality:
@@ -137,6 +137,7 @@ Verified functionality:
 ---
 
 ## Waveform Result
+![Traffic Waveform](waveforms/traffic_waveform.png)
 
 The generated waveform demonstrates successful state transitions of the traffic controller.
 
