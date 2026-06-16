@@ -42,7 +42,7 @@ The controller consists of the following states:
 | B_GREEN  | Red    | Green  |
 | B_YELLOW | Red    | Yellow |
 
-State Transition Sequence:
+### State Transition Sequence
 
 A_GREEN → A_YELLOW → B_GREEN → B_YELLOW → A_GREEN
 
@@ -80,7 +80,9 @@ B_YELLOW
 ## Project Structure
 
 ```text
-FPGA-Traffic-Light-Controller
+FPGA-Based-Traffic-Light-Controller
+
+├── README.md
 
 ├── rtl
 │   └── traffic_light_controller.v
@@ -91,11 +93,7 @@ FPGA-Traffic-Light-Controller
 ├── waveforms
 │   └── traffic_waveform.png
 
-├── docs
-
-├── traffic.vcd
-
-└── README.md
+└── docs
 ```
 
 ---
@@ -126,26 +124,24 @@ gtkwave traffic.vcd
 
 The design was verified using simulation and waveform analysis.
 
-Verified functionality:
+### Verified Functionality
 
-* Correct FSM transitions
+* Correct FSM state transitions
 * Correct Green → Yellow → Red sequencing
 * Proper alternation between Road A and Road B
 * Stable reset operation
 * No conflicting traffic directions observed during simulation
+* Safe traffic control operation
 
 ---
 
 ## Waveform Result
 
-
 The generated waveform demonstrates successful state transitions of the traffic controller.
 
-Waveform Screenshot:
+### Waveform Screenshot
 
-```text
 ![Traffic Waveform](waveforms/traffic_waveform.png)
-```
 
 ---
 
@@ -155,7 +151,7 @@ Through this project, the following concepts were explored:
 
 * Verilog RTL Design
 * Sequential Logic Design
-* Finite State Machines
+* Finite State Machines (FSM)
 * Testbench Development
 * Functional Verification
 * Waveform Debugging
@@ -177,6 +173,17 @@ Potential improvements include:
 
 ---
 
+## Tools Used
+
+| Tool           | Purpose                             |
+| -------------- | ----------------------------------- |
+| Icarus Verilog | Compilation and Simulation          |
+| GTKWave        | Waveform Analysis                   |
+| Verilog HDL    | RTL Design                          |
+| GitHub         | Version Control and Project Hosting |
+
+---
+
 ## Author
 
 Jatin Gujarathi
@@ -190,3 +197,9 @@ Areas of Interest:
 * Digital Logic Design
 * RTL Design
 * Functional Verification
+
+---
+
+## License
+
+This project is released under the MIT License.
