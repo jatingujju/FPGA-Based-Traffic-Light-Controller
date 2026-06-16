@@ -137,14 +137,14 @@ Verified functionality:
 ---
 
 ## Waveform Result
-![Traffic Waveform](waveforms/traffic_waveform.png)
+
 
 The generated waveform demonstrates successful state transitions of the traffic controller.
 
 Waveform Screenshot:
 
 ```text
-waveforms/traffic_waveform.png
+![Traffic Waveform](waveforms/traffic_waveform.png)
 ```
 
 ---
