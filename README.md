@@ -123,7 +123,7 @@ gtkwave traffic.vcd
 ---
 
 ## Verification Results
-
+![Traffic Waveform](waveforms/traffic_waveform.png)
 The design was verified using simulation and waveform analysis.
 
 Verified functionality:
