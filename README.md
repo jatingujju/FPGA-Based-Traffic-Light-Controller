@@ -2,72 +2,72 @@
 
 ## Overview
 
-This project implements an FPGA-Based Traffic Light Controller using Verilog HDL. The controller is designed as a Finite State Machine (FSM) that manages traffic signals for two directions in a safe and structured manner.
+This project implements an FPGA-Based Traffic Light Controller using Verilog HDL. The controller is designed using a Finite State Machine (FSM) architecture and includes advanced traffic management features such as pedestrian crossing support, emergency vehicle override, night mode operation, and safety interlocks.
 
-The design was verified through simulation using Icarus Verilog and waveform analysis using GTKWave.
-
----
-
-## Objectives
-
-* Design a Traffic Light Controller using Verilog HDL
-* Implement Finite State Machine (FSM) based control logic
-* Verify functionality through simulation
-* Generate and analyze waveforms using GTKWave
-* Follow FPGA-oriented digital design practices
+The design was verified using Icarus Verilog and GTKWave waveform analysis.
 
 ---
 
 ## Features
 
-* Verilog HDL implementation
-* FSM-based traffic control logic
-* Four traffic light states
-* Automatic state transitions
-* Testbench-based verification
-* VCD waveform generation
-* GTKWave waveform analysis
-* Safe traffic sequencing
+* Finite State Machine (FSM) Based Design
+* Road A and Road B Traffic Signal Control
+* Pedestrian Crossing Support
+* Emergency Vehicle Override
+* Night Mode Operation
+* All-Red Safety Interlock States
+* Modular Verilog Design
+* Testbench-Based Verification
+* GTKWave Waveform Analysis
+* FPGA-Oriented RTL Design
 
 ---
 
-## Traffic Light States
+## Traffic States
 
-The controller consists of the following states:
-
-| State    | Road A | Road B |
-| -------- | ------ | ------ |
-| A_GREEN  | Green  | Red    |
-| A_YELLOW | Yellow | Red    |
-| B_GREEN  | Red    | Green  |
-| B_YELLOW | Red    | Yellow |
-
-### State Transition Sequence
-
-A_GREEN → A_YELLOW → B_GREEN → B_YELLOW → A_GREEN
+| State       | Road A       | Road B       |
+| ----------- | ------------ | ------------ |
+| A_GREEN     | Green        | Red          |
+| A_YELLOW    | Yellow       | Red          |
+| ALL_RED_1   | Red          | Red          |
+| B_GREEN     | Red          | Green        |
+| B_YELLOW    | Red          | Yellow       |
+| ALL_RED_2   | Red          | Red          |
+| PED_WALK    | Red          | Red          |
+| EMERG_RED   | Red          | Red          |
+| NIGHT_FLASH | Yellow Flash | Yellow Flash |
 
 ---
 
-## FSM Diagram
+## Project Structure
 
 ```text
-A_GREEN
-    |
-    v
-A_YELLOW
-    |
-    v
-B_GREEN
-    |
-    v
-B_YELLOW
-    |
-    +-------> A_GREEN
+FPGA-Based-Traffic-Light-Controller
+
+├── rtl
+│   ├── traffic_light_controller.v
+│   ├── traffic_light_controller_v1.v
+│   ├── traffic_light_controller_v2.v
+│   ├── clk_en.v
+│   ├── timer.v
+│   ├── debounce_sync.v
+│   └── params.vh
+
+├── tb
+│   ├── tb_traffic_light_controller.v
+│   └── tb_traffic_light_controller_v2.v
+
+├── waveforms
+│   ├── traffic_waveform.png
+│   └── traffic_v2_waveform.png
+
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## Technologies Used
+## Tools Used
 
 * Verilog HDL
 * Icarus Verilog
@@ -77,116 +77,73 @@ B_YELLOW
 
 ---
 
-## Project Structure
-
-```text
-FPGA-Based-Traffic-Light-Controller
-
-├── README.md
-
-├── rtl
-│   └── traffic_light_controller.v
-
-├── tb
-│   └── tb_traffic_light_controller.v
-
-├── waveforms
-│   └── traffic_waveform.png
-
-└── docs
-```
-
----
-
-## Simulation Flow
+## Simulation
 
 ### Compile
 
 ```bash
-iverilog -o sim rtl\traffic_light_controller.v tb\tb_traffic_light_controller.v
+iverilog -o sim_v2 rtl/traffic_light_controller_v2.v tb/tb_traffic_light_controller_v2.v
 ```
 
-### Run Simulation
+### Run
 
 ```bash
-vvp sim
+vvp sim_v2
 ```
 
 ### Open Waveform
 
 ```bash
-gtkwave traffic.vcd
+gtkwave traffic_v2.vcd
 ```
 
 ---
 
-## Verification Results
+## Verification
 
-The design was verified using simulation and waveform analysis.
+The controller was verified through simulation and waveform analysis.
 
-### Verified Functionality
+Verified functionality:
 
-* Correct FSM state transitions
-* Correct Green → Yellow → Red sequencing
-* Proper alternation between Road A and Road B
-* Stable reset operation
-* No conflicting traffic directions observed during simulation
-* Safe traffic control operation
+* Correct FSM Transitions
+* Green → Yellow → Red Sequencing
+* Road Alternation Logic
+* Pedestrian Request Handling
+* Emergency Override Operation
+* Night Mode Operation
+* All-Red Safety States
+* Reset Functionality
+* No Simultaneous Green Lights
 
 ---
 
-## Waveform Result
+## Waveform Results
 
-The generated waveform demonstrates successful state transitions of the traffic controller.
-
-### Waveform Screenshot
+### Version 1 Waveform
 
 ![Traffic Waveform](waveforms/traffic_waveform.png)
 
----
+### Version 2 Waveform
 
-## Learning Outcomes
-
-Through this project, the following concepts were explored:
-
-* Verilog RTL Design
-* Sequential Logic Design
-* Finite State Machines (FSM)
-* Testbench Development
-* Functional Verification
-* Waveform Debugging
-* FPGA Design Methodology
+![Traffic Waveform V2](waveforms/traffic_v2_waveform.png)
 
 ---
 
 ## Future Enhancements
 
-Potential improvements include:
-
-* Pedestrian Crossing Support
-* Emergency Vehicle Priority
-* Night Mode Operation
-* Adaptive Green Timing
-* Watchdog Timer
-* UART-Based Monitoring
+* FPGA Board Deployment
+* Adaptive Traffic Timing
+* Vehicle Density Sensors
+* UART Monitoring Interface
+* RTC-Based Scheduling
+* Networked Traffic Junctions
 * Formal Verification
-
----
-
-## Tools Used
-
-| Tool           | Purpose                             |
-| -------------- | ----------------------------------- |
-| Icarus Verilog | Compilation and Simulation          |
-| GTKWave        | Waveform Analysis                   |
-| Verilog HDL    | RTL Design                          |
-| GitHub         | Version Control and Project Hosting |
 
 ---
 
 ## Author
 
-Jatin Gujarathi
+**Jatin Gujarathi**
 
 Final Year B.Tech Student
 
@@ -197,9 +154,3 @@ Areas of Interest:
 * Digital Logic Design
 * RTL Design
 * Functional Verification
-
----
-
-## License
-
-This project is released under the MIT License.
