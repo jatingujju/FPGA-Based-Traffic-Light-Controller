@@ -1,0 +1,29 @@
+# Simulation outputs
+
+sim
+sim_v2
+a.out
+test
+
+# Waveform dump files
+
+*.vcd
+
+# Temporary files
+
+*.log
+*.tmp
+
+# GTKWave save files
+
+*.gtkw
+
+# Backup files
+
+*~
+*.bak
+
+# Windows files
+
+Thumbs.db
+Desktop.ini
